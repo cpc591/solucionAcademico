@@ -1,0 +1,185 @@
+#login{
+    border: 1px solid gray;
+}
+.row{
+    width:100%;
+}
+.espacio{
+    margin-top:40px;
+}
+.espacio_iz{
+    margin-left:40px;
+}
+
+.clase1{
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+.clase2{
+    background-color: yellow;
+    color: white;
+    font-weight: bold;
+}
+.clase3{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+.color_errores{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 2px;
+    font-weight: bold;
+    font-size: 0.9em;
+    border: 0.5px solid rgba(0,0,0,0.2);
+}
+.asterisco{
+    color:red;
+}
+#login{
+    padding: 9px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+#btn-login{
+    background-color: #1361aa;
+    border-color: #ccc;
+    color: white;
+    font-weight: bold;
+}
+.md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab {
+    color: rgba(255,255,255,0.87);
+    background-color: #1361aa;
+   
+}
+.md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
+    background-color: #1361aa;
+}
+.cant_tabla{
+    height: 34px;
+    text-align: center;
+    padding-top: 6px;
+    font-weight: bold;
+}
+.texto_verde{
+    color:green!important;
+}
+.texto_azul{
+    color:#1361aa;
+}
+.errores{
+    font-weight: bold;
+}
+.glyphicon-minus{
+    display: none;
+}
+textarea{
+    resize: none;
+}
+
+
+.lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container
+{
+    height:160px!important;
+}
+.modal-body .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container
+{
+    height:150px!important;
+}
+.list-group-item{
+    padding: 3px 15px;
+}
+#cke_13{
+    display:none;
+}
+#cke_21{
+    display:none;
+}
+#cke_24{
+    display:none;
+}
+#cke_28{
+    display:none;
+}
+#cke_34{
+    display:none;
+}
+/*.ADMdtp-box footer {
+    display:none;
+}*/
+
+.ADMdtp-box footer {
+    /*height: 1.7em;*/
+    display:none;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    color: #333;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+@media screen and (max-width: 480px)  {
+    .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text{
+    
+        font-size: 1em !important;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 1800px)  {
+    .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text{
+    
+        font-size: 2em !important;
+    }
+}*/
+@media screen and (max-width: 335px)  {
+    .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text{
+    
+        font-size: 2em !important;
+    }
+}
+hr{
+    border-bottom: ridge;
+}
+
+
+.picker-day.holiday:not(.picker-selected){
+    background-color: #00ffa2;
+    color: #fff;
+}
+
+/*if my holiday isn't clickable (it's the case in the demo)*/
+.picker-day.holiday.picker-off{
+    background-color: #00a267;
+    color: #000;
+    cursor: default;
+    
+}
+.picker-day.holiday.picker-off:hover{
+    /*background-color: #00a267;*/
+    color: #000;
+    cursor: default;
+    
+}
+.picker-day.birthday.picker-off{
+    background-color: #ded100;
+    color: #000;
+    cursor: default;
+}
+.picker-day.birthday.picker-off:hover{
+    /*background-color: #00a267;*/
+    color: #000;
+    cursor: default;
+    
+}
+
+.picker-navigate {
+    width: 16.66%;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    font-weight: bold;
+    background: #eeeeee;
+}
