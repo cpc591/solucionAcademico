@@ -1,9 +1,12 @@
 @extends('Layout.master')
+@section('Title','Calendario')
+@section('app','ng-app="appCalendario"')
+@section('controller','ng-controller="calendarioCtrl"')
 
 
 
 @section('contenido')
-    <div class="container" ng-controller="calendarioCtrl" ng-app="myApp">
+    <div class="container">
             
             <div class="row">
                 <div class="col-xs-12">

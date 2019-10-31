@@ -13,7 +13,6 @@
 @endsection
 
 @section('contenido')
-    
     <div class="container" style="padding-top:30px">
         <div class="row" style="align-items: center;">
             <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6">

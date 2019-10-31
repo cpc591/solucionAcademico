@@ -119,3 +119,6 @@ Route::post('/rechazarRespuesta', 'RespuestaController@rechazarRespuesta');
 Route::post('/loginestudiante', 'LoginController@loginestudiante');
 Route::post('/logindependencia', 'LoginController@logindependencia');
 Route::get('/cerrar_sesion', 'LoginController@cerrar_sesion');
+
+Route::get('/consultasGenerales', 'ConsultaController@consultasGeneralesVista');
+Route::get('/getConsultasGenerales', 'ConsultaController@ConsultasGenerales');
