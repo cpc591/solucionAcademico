@@ -19,6 +19,10 @@
                       <li role="presentation" class="active"><a href="#lista" aria-controls="lista" role="tab" data-toggle="tab">Listado de solicitudes</a></li>
                       <li role="respondidas" ><a href="#respondidas" aria-controls="respondidas" role="tab" data-toggle="tab">Respondidas</a></li>
                       <li role="listaSolicitudConcepto" ><a href="#listaSolicitudConcepto" aria-controls="listaSolicitudConcepto" role="tab" data-toggle="tab">Solicitudes de conceptos</a></li>
+                      @if(Auth::user()->id == 39)
+                        <li role="presentation"><a href="/consultasGenerales">Consultas generales</a></li>
+                      @endif
+                      
                       <!--<li class="navbar-right" role="presentation"><a href="/cerrar_sesion">Cerrar sesión</a></li>
                       <li class="navbar-right" role="presentation"><a href="/bandeja3">{{Auth::user()->nombre}}</a></li>-->
                     </ul>

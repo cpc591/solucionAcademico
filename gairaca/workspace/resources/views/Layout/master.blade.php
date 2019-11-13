@@ -2,7 +2,9 @@
 <html lang="es">
 
 <head>
-	<meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="application/vnd.ms-excel" charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- La información debe sustituirse por la que corresponda a la página o portal. Solo debe ser modificado si es necesario. -->
@@ -40,7 +42,8 @@
     
     <link href="{{asset('/css/add.css')}}" rel="stylesheet"/>
     <link href="{{asset('/css/mycss.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/css/sweetalert.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/css/sweetalert.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/css/select.min.css')}}" rel="stylesheet"/>
 	<link href="{{asset('/css/sweetalert.min.css')}}" rel="stylesheet"/>
 	<link href="{{asset('/css/lf-ng-md-file-input.min.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">

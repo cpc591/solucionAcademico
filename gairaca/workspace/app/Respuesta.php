@@ -15,4 +15,8 @@ class Respuesta extends Model
     {
         return $this->belongsTo('App\Solicitude_User');
     }
+    public function correos()
+    {
+        return $this->belongsToMany('App\User','users_correos','respuesta_id','user_id');
+    }
 }

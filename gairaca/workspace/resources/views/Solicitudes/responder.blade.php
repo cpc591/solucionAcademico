@@ -73,7 +73,7 @@
                             <div class="col-md-4 col-xs-12 col-sm-12">
                                     <div class="alinea_load"><label><span class="asterisco">*</span>Codigo</label></div>
                                 
-                                    <input type="number" ng-model="user.codigo" class="form-control" ng-required="true" readonly/>
+                                    <input type="text" ng-model="user.codigo" class="form-control" ng-required="true" readonly/>
                                 
                             </div>
                         
@@ -151,6 +151,30 @@
                                               >
                                 </ng-ckeditor>
                         </div>-->
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="correosDependencias">Dependencias</label>
+                                    <ui-select multiple ng-model="respuesta.correosDependencias" theme="bootstrap">
+                                        <ui-select-match placeholder="Seleccione Dependencia (multiple)">@{{$item.nombre}}</ui-select-match>
+                                        <ui-select-choices repeat="item.id as item in dependencias | filter:$select.search">
+                                            <div ng-bind-html="item.nombre | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="correosDependenciasAdministrativas">Dependencias administrativas</label>
+                                    <ui-select multiple ng-model="respuesta.correosDependenciasAdministrativas" theme="bootstrap">
+                                        <ui-select-match placeholder="Seleccione Dependencia administrativa (multiple)">@{{$item.nombre}}</ui-select-match>
+                                        <ui-select-choices repeat="item.id as item in dependenciasAdministrativas | filter:$select.search">
+                                            <div ng-bind-html="item.nombre | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    
+                                </div>
+                            </div>
                         <div class="col-xs-12">
                                 <ng-ckeditor  
                                                 
@@ -435,12 +459,14 @@
     <script src="{{asset('/js/plugins/angular-material/angular-messages.min.js')}}"></script>
     <script src="{{asset('/js/plugins/angular-material/angular-material.min.js')}}"></script>
     <script src="{{asset('/js/plugins/material.min.js')}}"></script>
+    <script src="{{asset('/js/plugins/angular-sanitize.js')}}"></script>
     
    
   	<script src="{{asset('/js/plugins/sweetalert.min.js')}}"></script>
   	<script src="{{asset('/js/plugins/ckeditor/ckeditor.js')}}"></script>
   	<script src="{{asset('/js/plugins/ckeditor/ngCkeditor-v2.0.1.js')}}"></script>
-  	<script src="{{asset('/js/plugins/lf-ng-md-file-input.min.js')}}"></script>
+      <script src="{{asset('/js/plugins/lf-ng-md-file-input.min.js')}}"></script>
+      <script src="{{asset('/js/plugins/select.min.js')}}"></script>
   	<script src="{{asset('/js/solicitudes/solicitudes.js')}}"></script>
     <script src="{{asset('/js/solicitudes/solicitudesServices.js')}}"></script>
 @endsection

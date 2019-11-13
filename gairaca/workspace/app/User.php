@@ -34,6 +34,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Solicitude_concepto');
     }
+    public function correos()
+    {
+        return $this->belongsToMany('App\Respuesta','users_correos','respuesta_id','user_id');
+    }
     
     
     public function contieneRol($rol){

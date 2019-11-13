@@ -4,11 +4,11 @@ app.factory("consultaServi", ["$http", "$q", function($http, $q) {
 
     return {
 
-        getConsultasGenerales: function(consultar) {
+        getConsultasGenerales: function() {
             var defered = $q.defer();
             var promise = defered.promise;
 
-            $http.get('/getConsultasGenerales/?fechaInicio=' + consultar.fechaInicio + '&fechaFin=' + consultar.fechaFin).success(function(data) {
+            $http.get('/getConsultasGenerales').success(function(data) {
                 defered.resolve(data);
             }).error(function(err) {
                 defered.reject(err);

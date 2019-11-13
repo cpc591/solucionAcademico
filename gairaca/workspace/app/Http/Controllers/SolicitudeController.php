@@ -11,6 +11,7 @@ use App\Multimedias_Solicitude;
 use App\Multimedias_Respuesta;
 use App\Solicitude_User;
 use App\User;
+use App\UserCorreo;
 use App\ListaSolicitudes;
 use App\Solicitude_User_Accione;
 use App\Respuesta;
@@ -1534,12 +1535,27 @@ class SolicitudeController extends Controller
         $solicitude_user = Solicitude_User::where('solicitude_id',$id)->orderby('updated_at','DESC')->get();
         $solicitude_user_accione = Solicitude_User_accione::where('solicitude_user_id',$solicitude_user[0]->id)->orderby('fecha','DESC')->get();
         
-        $respuestas = Respuesta::where('solicitude_user_id',$solicitude_user[0]->id)->first();
+        $respuestas = Respuesta::where('solicitude_user_id',$solicitude_user[0]->id)->with('correos')->first();
         //return $respuestas;
         
         $multimedias_respuesta=null;
-         
+        
+        $selectDependencias = [];
+        $selectDependenciasAdministrativas = [];
         if($respuestas!=null){
+            //$respuestas["correos"] = UserCorreo::where('respuesta_id',$respuestas->id)->select('user_id')->get();
+            if($respuestas["correos"] != null){
+                
+                for($i=0;$i<sizeof($respuestas["correos"]);$i++){
+                    $userCorreoDependencia = User::where('id',$respuestas["correos"][$i]->id)->with('roles')->first();
+                    //return $user;
+                    if($userCorreoDependencia->roles[0]["id"] == 7){
+                        array_push($selectDependenciasAdministrativas, $userCorreoDependencia->id);
+                    }else{
+                        array_push($selectDependencias, $userCorreoDependencia->id);
+                    }
+                }
+            }
             $multimedias_respuesta = Multimedias_Respuesta::where('respuesta_id',$respuestas->id)->get();
         }
         
@@ -1558,12 +1574,16 @@ class SolicitudeController extends Controller
         //return $user;
 		//return array('solicitud' => $solicitud,'user' => $user, 'multimedias' => $multimedias, 'datos' => $res, 'respuesta'=>$respuestas, 'multimedias_respuesta'=>$multimedias_respuesta);
 		
-		$lista_dependencia = User::where('estado',1)->where('id','<>',5)->where('id','<>',Auth::user()->id)->whereHas('roles', function ($query) {
+		$lista_dependencia = User::where('estado',1)->where('id','<>',Auth::user()->id)->whereHas('roles', function ($query) {
             $query->where('role_id',1);
+        })->get();
+
+        $dependenciasAdministrativas = User::where('estado',1)->where('id','<>',Auth::user()->id)->whereHas('roles', function ($query) {
+            $query->where('role_id',7);
         })->get();
 		
         return ['solicitud' => $solicitud,'user' => $user, 'multimedias' => $multimedias, 'datos' => $res, 'respuesta'=>$respuestas, 'multimedias_respuesta'=>$multimedias_respuesta,
-        'dependencias'=>$lista_dependencia]; 
+        'dependencias'=>$lista_dependencia,'dependenciasAdministrativas'=>$dependenciasAdministrativas,'selectDependencias'=>$selectDependencias,'selectDependenciasAdministrativas'=>$selectDependenciasAdministrativas]; 
     }
     
     public function responder_desarrollo($id){

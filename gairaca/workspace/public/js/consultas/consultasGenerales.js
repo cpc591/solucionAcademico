@@ -17,17 +17,14 @@ app.directive('ngHtml', ['$compile', function($compile) {
 
 app.controller('consultageneralCtrl', function($scope, consultaServi) {
     //$scope.options = { renderers: $.extend($.pivotUtilities.renderers, $.pivotUtilities.c3_renderers) }
+    $scope.solicitudes = [];
     google.charts.load('current', {
         'packages': ['corechart', 'charteditor']
     });
-    $scope.solicitudes = [];
-    $scope.errores = null;
-    $scope.consultar = {
-        fechaInicio: null,
-        fechaFin: null
-    };
 
-    consultaServi.getConsultasGenerales($scope.consultar).then(function(dato) {
+    $scope.errores = null;
+
+    consultaServi.getConsultasGenerales().then(function(dato) {
         if (dato.success) {
             $scope.solicitudes = dato.solicitudes;
             if ($scope.solicitudes.length > 0) {
@@ -39,7 +36,7 @@ app.controller('consultageneralCtrl', function($scope, consultaServi) {
                     renderers: renderers,
                     rendererName: "Area Chart",
                     rendererOptions: { gchart: { width: 800, height: 600 } }
-                });
+                }, false, "es");
                 //});
             }
         } else {

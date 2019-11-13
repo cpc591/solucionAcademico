@@ -260,7 +260,7 @@ class RadicacionController extends Controller
         if($validator->fails()){
             return ["success"=>false,"errores"=>$validator->errors()];
         }
-        $radicado = Respuesta::where('id',$request->respuesta)->first();
+        $radicado = Respuesta::where('id',$request->respuesta)->with('correos')->first();
         if(Respuesta::where('radicado',$request->consecutivo)->first() != null){
             return ["success"=>false, "errores"=>["El radicado ya se encuentra registrado con otra solicitud."]];
         }
@@ -310,7 +310,7 @@ class RadicacionController extends Controller
                $message->from(env('CONTACT_MAIL'), env('CONTACT_NAME'));
      
                //asunto
-               $message->subject("Respuesta de solicitud de solicitud");
+               $message->subject("Respuesta de solicitud");
      
                //receptor
                $message->to($estudiante->email, $estudiante->nombre);
@@ -327,15 +327,54 @@ class RadicacionController extends Controller
                    $message->from(env('CONTACT_MAIL'), env('CONTACT_NAME'));
          
                    //asunto
-                   $message->subject("Respuesta de solicitud de solicitud");
+                   $message->subject("Respuesta de solicitud");
          
                    //receptor
                    $message->to($estudiante->email_adicional, $estudiante->nombre);
+                   
                 });
             }catch(\Exception $e){
                 // Never reached
                 //return $e;
             }
+        }
+        $solicitude_user = Solicitude_User::
+            has('respuestas')->
+            join("respuestas","respuestas.solicitude_user_id","=","solicitude_user.id")
+            ->where('solicitude_user.solicitude_id',$id)
+            
+            ->select('respuestas.mensaje','solicitude_user.id as solicitude_user_id')->first();
+            
+            //return $solicitude_user;
+        //$solicitude_user = Solicitude_User::where('solicitude_id',$id)->where('user_id',39)->first();
+            
+        
+           // $respuesta = Respuesta::where('solicitude_user_id',$solicitude_user->id)->first();
+            //return $respuesta;
+        $view =  \View::make('Solicitudes.pdf_respuesta', ['respuesta' => $solicitude_user->mensaje])->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        if($radicado->correos != null){
+            for($i=0;$i<sizeof($radicado->correos);$i++){
+                $enviarCorreoUser = User::where('id',$radicado["correos"][$i]->user_id)->first();
+                try{
+                    \Mail::send('VistasEmails.email_respuesta',$data, function($message) use ($request, $enviarCorreoUser){
+                       //remitente
+                       $message->from(env('CONTACT_MAIL'), env('CONTACT_NAME'));
+             
+                       //asunto
+                       $message->subject("Respuesta de solicitud");
+             
+                       //receptor
+                       $message->to($enviarCorreoUser->email, $enviarCorreoUser->nombre);
+                       
+                    });
+                }catch(\Exception $e){
+                    // Never reached
+                    //return $e;
+                }
+            }
+            
         }
         
         return ["success"=>true];

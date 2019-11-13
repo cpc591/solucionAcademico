@@ -78,6 +78,19 @@ class RespuestaController extends Controller
             $respuesta->solicitude_user_id = $solicitude_user[0]->id;
             $respuesta->user_create = Auth::user()->nombre;
             $respuesta->save();
+
+            
+            if($request->correosDependencias != null){
+                foreach ($request->correosDependencias as $correo) {
+                    $respuesta->correos()->attach($correo);
+                }
+            }
+            if($request->correosDependenciasAdministrativas != null){
+                foreach ($request->correosDependenciasAdministrativas as $correo) {
+                    $respuesta->correos()->attach($correo);
+                }
+            }
+            
             //return $respuesta;
             $date = Carbon::now();
         if($request->Galeria != null){
@@ -150,7 +163,7 @@ class RespuestaController extends Controller
             return  ["success"=>true];
     }
     public function crear_borrador(Request $request){
-        //return $request->contenido;
+        //return $request->all();
         $validator = \Validator::make($request->all(), [
             'solicitud' => 'required|exists:solicitudes,id',
             'Galeria.*' => 'mimes:pdf',
@@ -185,7 +198,18 @@ class RespuestaController extends Controller
                 $respuesta->solicitude_user_id = $solicitude_user[0]->id;
                 $respuesta->user_create = Auth::user()->nombre;
                 $respuesta->save();
-        
+
+                $respuesta->correos()->detach();
+                if($request->correosDependencias != null){
+                    foreach ($request->correosDependencias as $correo) {
+                        $respuesta->correos()->attach($correo);
+                    }
+                }
+                if($request->correosDependenciasAdministrativas != null){
+                    foreach ($request->correosDependenciasAdministrativas as $correo) {
+                        $respuesta->correos()->attach($correo);
+                    }
+                }
             
             $date = Carbon::now();
         if($request->Galeria != null){

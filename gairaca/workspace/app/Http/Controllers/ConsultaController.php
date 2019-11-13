@@ -21,7 +21,7 @@ class ConsultaController extends Controller
 	}
     public function consultasGeneralesVista(){
         //return ListaSolicitudes::get();
-        return view('Consultas.prueba');
+        return view('Consultas.consultageneral');
     }
 
     public function ConsultasGenerales(Request $request){
