@@ -913,7 +913,7 @@
     <script src="{{asset('/js/plugins/dir-pagination.js')}}"></script>
     <script src="{{asset('/js/plugins/lf-ng-md-file-input.min.js')}}"></script>
     <script src="{{asset('/js/plugins/ADM-dateTimePicker.min.js')}}"></script>
-  	<script src="{{asset('/js/plugins/sweetalert.min.js')}}"></script>
+    <script src="{{asset('/js/plugins/sweetalert.min.js')}}"></script>
   	<script src="{{asset('/js/dependencias/dependencias.js')}}"></script>
     <script src="{{asset('/js/dependencias/dependenciasServices.js')}}"></script>
 @endsection

@@ -398,12 +398,14 @@
     <script src="{{asset('/js/plugins/angular-material/angular-messages.min.js')}}"></script>
     <script src="{{asset('/js/plugins/angular-material/angular-material.min.js')}}"></script>
     <script src="{{asset('/js/plugins/material.min.js')}}"></script>
+    <script src="{{asset('/js/plugins/angular-sanitize.js')}}"></script>
     
    
   	<script src="{{asset('/js/plugins/sweetalert.min.js')}}"></script>
   	<script src="{{asset('/js/plugins/ckeditor/ckeditor.js')}}"></script>
   	<script src="{{asset('/js/plugins/ckeditor/ngCkeditor-v2.0.1.js')}}"></script>
-  	<script src="{{asset('/js/plugins/lf-ng-md-file-input.min.js')}}"></script>
+      <script src="{{asset('/js/plugins/lf-ng-md-file-input.min.js')}}"></script>
+      <script src="{{asset('/js/plugins/select.min.js')}}"></script>
   	<script src="{{asset('/js/solicitudes/solicitudes.js')}}"></script>
     <script src="{{asset('/js/solicitudes/solicitudesServices.js')}}"></script>
 @endsection
