@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://www.unimagdalena.edu.co" />
     <meta property="og:image" content="https://cdn.unimagdalena.edu.co/images/escudo/bg_light/128.png" />
     <meta property="og:description" content="Institución de Educación Superior acreditada por alta calidad ubicada en la ciudad de Santa Marta, Magdalena"/>
-    <title>GAIRACA PLUS</title>
+    <title>GAIRACA PLUS +</title>
 	<meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
     <meta name='application-name' content='Universidad del Magdalena'>
